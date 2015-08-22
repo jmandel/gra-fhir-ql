@@ -186,9 +186,7 @@ function makeSchema (server) {
   function toGtype(path){
     var struct = structures[path];
     var ret;
-    if (!!struct.nameReference){
-      ret = gtypes[namesToPaths[struct.nameReference]];
-    } else if (struct.type === undefined){
+    if (struct.type === undefined){
       ret = null;
     } else if (struct.type.length > 1) {
 
@@ -220,7 +218,11 @@ function makeSchema (server) {
           //console.log("field sfor", struct)
           return (struct.children || []).map(function(subpath){
             var name = subpath.split(".").slice(-1)[0];
-            var substruct = structures[subpath];
+             var substruct = structures[subpath];
+            if (!!substruct.nameReference){
+               subpath = namesToPaths[subpath.split(".")[0] + " " + substruct.nameReference];
+               substruct = structures[subpath];
+            }
             var wrapList = (substruct.max === '*') ? function(x){return new GraphQLList(x);} : function(x){return x;};
             // console.log("eval substr", substruct, substruct.type)
             var nextType = gtypes[subpath] || 'default no such ' + path + subpath;
@@ -232,14 +234,14 @@ function makeSchema (server) {
             if (substruct.type.length === 1 && substruct.type[0].code  == 'Reference') {
               var profileUrl = substruct.type[0].profile ? substruct.type[0].profile[0] : "/any" ;
               nextType = gtypes[resourceFromUri(profileUrl)];
-            } else if (substruct.type.length === 1 && substruct.type[0].code!=="Element") {
+            } else if (substruct.type.length === 1 && substruct.type[0].code!=="Element"  && substruct.type[0].code!=="BackboneElement" ){
+
               var code = substruct.type[0].code;
               if (code === '*') {
                 code = 'Resource';
               }
               nextType = gtypes[code] || "one-type no such " +code +"(code)" + path + subpath +substruct.type[0].code;
             } 
-            //console.log(path, subpath, isReference)
             return [name, {
               type: wrapList(nextType),
               description: substruct.definition,
