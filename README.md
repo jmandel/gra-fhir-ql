@@ -33,7 +33,7 @@ To run queries, use this URL structure:
 Find patients named "Chalmers"; fetch their birthdates, last names, and procedure list.
 ```
 { 
-  Patient (family: "Chalmers",  id:"example") { 
+  Patient (family: ["exact","Chalmers"],  id:"example") { 
     name { 
       given
       family
