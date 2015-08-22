@@ -17,7 +17,8 @@
     "nodemon": "^1.4.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "sh fetch.sh",
+    "start": "serve.js"
   },
   "author": "Josh Mandel",
   "license": "Apache 2.0"
