@@ -18,7 +18,7 @@
   },
   "scripts": {
     "postinstall": "sh fetch.sh",
-    "start": "serve.js"
+    "start": "node serve.js"
   },
   "author": "Josh Mandel",
   "license": "Apache 2.0"
