@@ -150,6 +150,8 @@ reduce(function(coll, item){
 }, {});
 
 function makeSchema (server) {
+  if(server.slice(-1)[0] !== '/') server += '/';
+
   var gtypes = {};
   ['time', 'base64Binary',  'instant', 'uri', 'string', 'dateTime', 'date', 'xhtml'].
   forEach(function(t){
