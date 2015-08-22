@@ -1,0 +1,24 @@
+{
+  "name": "gra-fhir-ql",
+  "version": "0.0.1",
+  "description": "Fun graphql proxy for FHIR servers",
+  "main": "index.js",
+  "dependencies": {
+    "es6-promise": "^3.0.2",
+    "express": "^4.13.3",
+    "graphql": "^0.4.2",
+    "merge": "^1.2.0",
+    "request": "^2.61.0"
+  },
+  "devDependencies": {
+    "fixmyjs": "^1.0.3",
+    "jshint": "^2.8.0",
+    "node-jslint": "^0.1.1",
+    "nodemon": "^1.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Josh Mandel",
+  "license": "Apache 2.0"
+}
