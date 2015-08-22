@@ -1,5 +1,16 @@
 # gra-fhir-ql
-Prototype graphql implementation for FHIR
+Prototype [graphql](http://facebook.github.io/react/blog/2015/05/01/graphql-introduction.html) implementation for FHIR. This acts as a proxy server in that it receives graphql requests from a client, and turns these into FHIR REST API calls out to an authoritative server. The current prototype can handle:
+
+ * All FHIR types and fields via introspection
+ * Resource-specific search params (dashes -> underscores)
+ * Patient and Encounter "compartments" via `with` field
+
+Serious limitations include:
+
+ * Proxies all requests to FHIR HTTP `read` and `search` calls
+ * Doesn't cache any results (that means... a lot of calls)
+ * Fragile, buggy, and untested
+
 # Example
 
 Find patients named eve; fetch their birthdates, last names, and procedure list.
