@@ -30,7 +30,7 @@ To run queries, use this URL structure:
 
 [Try it live!](https://aqueous-sands-9529.herokuapp.com/http%3A%2F%2Ffhir-dev.healthintersections.com.au%2Fopen%2F?q=%7B%20Patient%20(family%3A%20%22Chalmers%22,%20id:%22example%22)%20%7B%20name%20%7B%20given%20family%20%7D%20birthDate%20with%20%7B%20Procedure%20%7B%20type%20%7B%20text%20%7D%20performer%20%7B%20person%20%7B%20...%20on%20Practitioner%20%7B%20name%20%7B%20given%20%7D%20identifier%20%7B%20system%20value%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D)
     
-Find patients named eve; fetch their birthdates, last names, and procedure list.
+Find patients named "Chalmers"; fetch their birthdates, last names, and procedure list.
 ```
 { 
   Patient (family: "Chalmers",  id:"example") { 
